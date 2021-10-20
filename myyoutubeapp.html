@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+        }
+        #navbar{
+            display: flex;
+            height: 30px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        #topnav img{
+            height: 30px;
+            width: 30px;
+            margin-left: 15px;
+        }
+        #logo img{
+            height: 90px;
+            margin-top: -30px;
+        }
+        #h2 h2{
+            font-size: 34px;
+            margin-top: -2px;
+            margin-left: -30px;
+        }
+        #searchbar{
+            margin-top: 0px;
+        }
+        #searchbar input{
+            width: 500px;
+            height: 32px;
+            margin-left: 100px;
+        }
+        #searchbar button{
+            width: 80px;
+            height: 38px;
+        }
+        #mike{
+            height: 32px;
+            width: 32px;
+            border-radius: 15px;
+            background-color: rgb(241, 241, 241);
+            margin-left: 30px;
+        }
+        #mike img{
+            height: 22px;
+            padding: 5px;
+        }
+        #body{
+            display: grid;
+            grid-template-columns: 5% 95%;
+        }
+        #leftside{
+            height: auto;
+        }
+        .table{
+            margin-top: 20px;
+        }
+        .table img{
+            width: 30px;
+            height: 30px;
+            padding: 10px;
+        }
+        #rightside{
+            margin-left: 20px;
+        }
+        #videos{
+            display: grid;
+            grid-template-columns: repeat(4, 20%);
+            grid-gap: 5%;
+        }
+        iframe{
+            width: 300px;
+            height: 215px;
+            margin-bottom: -50px;
+        }
+        
+
+    </style>
+</head>
+<body>
+
+    <div id="navbar">
+        <div id="topnav">
+            <img src="https://cdn-icons-png.flaticon.com/128/1828/1828551.png" alt="">
+        </div>
+        <div id="logo">
+            <img src="https://www.freepnglogos.com/uploads/youtube-logo-red-hd-13.png" alt="">
+        </div>
+        <div id="h2">
+            <h2>YouTube</h2>
+        </div>
+        <div id="searchbar">
+            <input type="text" id="query" placeholder="Search for a Video" />
+            <button onclick="searchVideos()"> search </button>
+        </div>
+    </div>
+    <div id="body">
+        <div id="leftside">
+            <table class="table">
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/128/25/25694.png" alt=""></td>
+                    
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons.flaticon.com/png/128/4229/premium/4229877.png?token=exp=1634743024~hmac=350ca11bce64e187cb38b730d42f69ef" alt=""></td>
+                    
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/128/907/907837.png" alt=""></td>
+                   
+                </tr>
+                <tr>
+                    <td><img src="https://cdn-icons-png.flaticon.com/128/152/152810.png" alt=""></td>
+                   
+                </tr>
+            </table>
+        </div>
+        <div id="rightside">
+            <div id="videos"></div>
+        </div>
+
+    </div>
+    
+    
+</body>
+</html>
+
+<script>
+    //https://youtube.googleapis.com/youtube/v3/search?q=csk&type=video&key=[YOUR_API_KEY]
+    //AIzaSyCQHjGvBleblqDNbZ3ZnstWXH3k2oZpb-E
+
+    let videos = document.getElementById("videos")
+    async function searchVideos(){
+        let query = document.getElementById("query").value
+        let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?q=${query}&type=video&key=AIzaSyCQHjGvBleblqDNbZ3ZnstWXH3k2oZpb-E&maxResults=20`)
+        let data = await res.json();
+        console.log("data:", data);
+        console.log(res);
+
+        appendVideos(data.items);
+    }
+    searchVideos();
+
+    function appendVideos(video_data){
+        videos.innerHTML = null;
+        video_data.forEach(({ id: {videoId} }) =>{
+            //console.log("video", videoId);
+            let div = document.createElement("div");
+            div.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+             div.style.marginTop = "20px";
+
+            videos.append(div);
+        });
+    }
+</script>
