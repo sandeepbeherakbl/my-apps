@@ -1,0 +1,325 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Orbitron', sans-serif;
+}
+#navbar{
+    display: grid;
+    grid-template-columns: 20% 40% 40%;
+    padding-left: 4%;
+    padding-right: 4%;
+    background-color: rgba(0, 0, 0, 0.281);
+    height: 80px;
+}
+#topbg{
+    min-width: fit-content;
+    background-image: url(https://images-na.ssl-images-amazon.com/images/I/91APaQCrxYL.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+}
+h2, h3{
+    margin-bottom: -18px;
+}
+h2{
+    color: rgb(0, 0, 63);
+}
+h3{
+    color: white;
+}
+#inputs{
+    margin-top: 28px;
+    margin-left: 120px;
+}
+#inputs input{
+    width: 280px;
+    height: 40px;
+    border: none;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+
+}
+#inputs button{
+    margin-left: -10px;
+    height: 40px;
+    width: 100px;
+    border: none;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+#options{
+    display: grid;  
+    grid-template-columns: 50% 50%;
+    
+}
+#options p{
+    text-align: right;
+    margin-left: 40px;
+    margin-top: 38px;
+    font-size: 14px;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+#options a:hover{
+    height: 20px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 50px;
+    border: 2px solid rgb(0, 211, 248) ;
+    color: rgb(0, 211, 248);
+}
+#decor{
+    display: grid;
+    grid-template-columns: repeat(6, 15%);
+    grid-gap: 20px;
+    justify-content: center;
+    margin-top: 3%;
+}
+#decor img{
+    width: 95%;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px gray;
+    background-color: blueviolet;
+}
+#decor img:hover{
+    height: 100%;
+    width:195px;
+    opacity: 0.5;
+}
+.service{
+    margin: 30px 0px ;
+    text-align: center;
+    text-transform: uppercase;
+}
+#servicecity{
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    text-align: center;
+    background-color: rgb(245, 245, 245) ;
+}
+.cityicons img{
+    width: 40%;
+    height: auto;
+}
+.cityicons p{
+    text-transform: uppercase;
+    margin-top: 0px;
+}
+#continental{
+    display: grid;
+    grid-template-columns: repeat(10, 10%);
+    text-align: center;
+    
+}
+#continental img{
+    width: 80%;
+    height: auto;
+    margin-top: 20px;
+}
+#continental img:hover {
+    opacity: 0.6;
+}
+#continental p{
+    font-size: 12px;
+    font-weight: bold;
+}
+.recipes{
+    display: grid;
+    grid-template-columns: 30% 20% 40%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top: 5px;
+}
+#color1 {
+    background-color: tomato;
+}
+#color2 {
+    background-color:darkturquoise;
+}
+#color3 {
+    background-color:fuchsia;
+}
+#color4 {
+    background-color:gold;
+}
+#color5 {
+    background-color:crimson;
+}
+.recipes img{
+    width: 90%;
+    height: 220px;
+    padding: 6%;
+}
+.recipes h2{
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+.recipes button{
+    margin-left: 30%;
+    width: 150px;
+    padding: 6px;
+    font-size: 18px;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.recipes button:hover{
+    background-color: rgba(255, 255, 255, 0.493);
+    box-shadow: 0 0 15px #000000;
+}
+
+.recipes img:hover{
+    width: 100%;
+    height: 240px;
+    color: #000000;
+    box-shadow: 0 0 15px #000000;
+    text-shadow: 0 0 15px #000000;
+}
+.containerimage{
+    width: 500px;
+    height: 300px;
+    margin-left: 31%;
+}
+.head{
+    background-image: linear-gradient(to right , #3C3B3F, #605C3C);
+}
+.ingredient{
+    width: 100%;
+    font-size: large;
+    text-align: center;
+}
+.iheeading{
+    text-transform: uppercase;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: rgba(0, 139, 139, 0.137);
+}
+.mainhead{
+    width: 100%;
+    height: auto;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 26px;
+    background-color: rgba(0, 139, 139, 0.137);
+}
+.mainins{
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom:10px ;
+    
+}
+#footimage{
+    margin-top: 50px;
+    min-width: fit-content;
+    background-image: url(https://media.istockphoto.com/photos/food-collage-a-panoramic-design-with-many-tasty-dishes-picture-id1173102346);
+    background-size: cover;
+    height: 200px;
+}
+#latestbody{
+    background-image: linear-gradient(to right, #ADA996, #F2F2F2, #DBDBDB, #EAEAEA);
+}
+#receipebody{
+    background-image: linear-gradient(to right, #DAD299, #B0DAB9);
+}
+#blank{
+    margin-top: 20px;
+    background-color: black;
+    height: 100px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+ul{
+    display: flex;
+  }
+  ul li{
+    position: relative;
+    display: block;
+    color: #666;
+    font-size: 30px;
+    height: 50px;
+    width: 50px;
+    background: #171515;
+    line-height: 50px;
+    border-radius: 50%;
+    margin: 0 15px;
+    cursor: pointer;
+    transition: .1s;
+  }
+  ul li:before{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    height: inherit;
+    width: inherit;
+    border-radius: 50%;
+    transform: scale(.9);
+    z-index: -1;
+    transition: .5s;
+  }
+  ul li:nth-child(1):before{
+    background: #4267B2;
+  }
+  ul li:nth-child(2):before{
+    background: #1DA1F2;
+  }
+  ul li:nth-child(3):before{
+    background: #E1306C;
+  }
+  ul li:nth-child(4):before{
+    background: #2867B2;
+  }
+  ul li:nth-child(5):before{
+    background: #ff0000;
+  }
+  ul li:hover:before{
+    filter: blur(3px);
+    transform: scale(1.2);
+    /* box-shadow: 0 0 15px #d35400; */
+  }
+  ul li:nth-child(1):hover:before{
+    box-shadow: 0 0 15px #4267B2;
+  }
+  ul li:nth-child(2):hover:before{
+    box-shadow: 0 0 15px #1DA1F2;
+  }
+  ul li:nth-child(3):hover:before{
+    box-shadow: 0 0 15px #E1306C;
+  }
+  ul li:nth-child(4):hover:before{
+    box-shadow: 0 0 15px #2867B2;
+  }
+  ul li:nth-child(5):hover:before{
+    box-shadow: 0 0 15px #ff0000;
+  }
+  ul li:nth-child(1):hover{
+    color: #456cba;
+    box-shadow: 0 0 15px #4267B2;
+    text-shadow: 0 0 15px #4267B2;
+  }
+  ul li:nth-child(2):hover{
+    color: #26a4f2;
+    box-shadow: 0 0 15px #1DA1F2;
+    text-shadow: 0 0 15px #1DA1F2;
+  }
+  ul li:nth-child(3):hover{
+    color: #e23670;
+    box-shadow: 0 0 15px #E1306C;
+    text-shadow: 0 0 15px #E1306C;
+  }
+  ul li:nth-child(4):hover{
+    color: #2a6cbb;
+    box-shadow: 0 0 15px #2867B2;
+    text-shadow: 0 0 15px #2867B2;
+  }
+  ul li:nth-child(5):hover{
+    color: #ff1a1a;
+    box-shadow: 0 0 15px #ff0000;
+    text-shadow: 0 0 15px #ff0000;
+  }
