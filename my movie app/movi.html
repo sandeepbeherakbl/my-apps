@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        *{
+            font-family: 'Source Serif Pro', serif;
+        }
+        body{
+            margin: 0px;
+            padding: 0px;
+            background-color: black;
+        }
+        #navbar{
+            display: grid;
+            grid-template-columns: 15% 55% 30%;
+            background-color: rgba(0, 132, 255, 0.404);
+        }
+        #container{
+            margin-top: 20px;
+            margin-right: 0px;
+        }
+        #movie{
+            width: 70%;
+            height: 35px;
+            margin-top: -10px;
+            border-bottom-left-radius: 60px;
+            border-top-left-radius: 60px;
+        }
+        #btn{
+            width: 10%;
+            height: 39px;
+            margin-left: -10px;
+            border-bottom-right-radius: 60px;
+            border-top-right-radius: 60px;
+        }
+        #titel img{
+            margin-left: 80px;
+            margin-top: 15px;
+            height: 50px;
+            width: 50px;
+        }
+        #site h1{
+            margin-left: -60px;
+            font-family: 'Irish Grover', cursive;
+            background-color: #f3ec78;
+            background-image: linear-gradient(45deg, #f3ec78, #af4261);
+            background-size: 100%;
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            -webkit-text-fill-color: transparent; 
+            -moz-text-fill-color: transparent;
+        }
+        #data{
+            margin: 10px 10px;
+
+        }
+        .topdiv{
+            display: grid;
+            grid-template-columns: 30% 70%;
+            background-color: rgba(0, 119, 255, 0.116);
+        }
+        .title{
+            color: blanchedalmond;
+            font-weight: bolder;
+        }
+        .ratings{
+            width: 200px;
+            padding: 10px;
+            color: black;
+            background-color: rgb(230, 230, 0);
+        }
+        .topdiv p{
+            color: white;
+            margin-right: 50px;
+        }
+        .ratings h3{
+            font-weight: bolder;
+            color: black;
+        }
+        .topdiv img{
+            padding: 5px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="navbar">
+            <div id="titel">
+                <img src="https://cdn-icons.flaticon.com/png/128/2828/premium/2828307.png?token=exp=1635069647~hmac=8c4d804c8b32fa2aae40393490bace39" alt="">
+            </div>
+            <div id="site">
+                <h1>Noha Tv</h1>
+            </div>
+            <div id="container">
+                <input type="text" placeholder=" Enter Movie Name " id="movie" />
+                <button id="btn" onclick="searchMovie()"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div id="data"><br /><br /></div>
+</body>
+
+</html>
+
+<script>
+    //aced2e1e
+    var div_data = document.getElementById("data");
+
+    async function searchMovie() {
+        try {
+            let movie = document.getElementById("movie").value;
+            let moviedata = await fetch(`http://www.omdbapi.com/?t=${movie}&apikey=aced2e1e&type=movie`);
+            let display = await moviedata.json();
+            //console.log(display);
+            if (display.Response == "True") { } else {
+                error();
+            }
+
+            let div = document.createElement('div')
+            div.setAttribute('class' , 'topdiv')
+
+            let contentdiv = document.createElement('div')
+
+            let title = document.createElement("h1");
+            title.setAttribute('class' , 'title')
+            title.innerHTML = "Title :-  " + display.Title;
+
+            let year = document.createElement("p");
+            year.setAttribute('class', 'year')
+            year.innerHTML = "Released Date  :-  " + display.Released;
+
+            let ratings = document.createElement("h3");
+            ratings.setAttribute('class' , 'ratings')
+            ratings.innerHTML = "IMDB Ratings :-  " + display.imdbRating;
+           
+            if (display.imdbRating > 7.5) {
+                let recommend = document.createElement("h4");
+                recommend.innerHTML = "Recommended to Watch";
+                ratings.append(recommend);
+            }
+
+            let genre = document.createElement("p");
+            genre.innerHTML = "Genre :-   " + display.Genre; //`${JSON.stringify(display)}`;
+
+            let plot = document.createElement("p");
+            plot.innerHTML = "Movie Plot :-  " + display.Plot;
+
+            let lang = document.createElement("p");
+            lang.innerHTML = "Language :-  " + display.Language; 
+
+            let imgdiv = document.createElement('div')
+            let img = document.createElement("img");
+            img.src = display.Poster;
+
+            imgdiv.append(img)
+            contentdiv.append(title, year, ratings, genre, lang, plot)
+            div.append(imgdiv, contentdiv);
+            movie = document.getElementById("movie").value = "";
+            div_data.append(div)
+        } 
+        catch (err) {
+            function error() {
+                div_data.innerHTML = "";
+                let gif = document.createElement("img");
+                gif.src ="https://www.gpkumar.com/wp-content/uploads/2020/05/HTML-404-Page.gif";
+                gif.style.width = "100%";
+                div_data.append(gif);
+            }
+            console.log("err:", error());
+        }
+    }
+</script>
